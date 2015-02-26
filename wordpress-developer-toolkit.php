@@ -54,6 +54,7 @@ class MLWWPDeveloperToolkit
     public function load_dependencies()
     {
       include("php/wpdt_plugins.php");
+      include("php/wpdt_shortcodes.php");
     }
 
     /**
@@ -80,20 +81,20 @@ class MLWWPDeveloperToolkit
     public function register_post_types()
     {
       $labels = array(
-  			'name'               => 'Quizzes',
-  			'singular_name'      => 'Quiz',
-  			'menu_name'          => 'Quiz',
-  			'name_admin_bar'     => 'Quiz',
+  			'name'               => 'Plugins',
+  			'singular_name'      => 'Plugin',
+  			'menu_name'          => 'Plugin',
+  			'name_admin_bar'     => 'Plugin',
   			'add_new'            => 'Add New',
-  			'add_new_item'       => 'Add New Quiz',
-  			'new_item'           => 'New Quiz',
-  			'edit_item'          => 'Edit Quiz',
-  			'view_item'          => 'View Quiz',
-  			'all_items'          => 'All Quizzes',
-  			'search_items'       => 'Search Quizzes',
-  			'parent_item_colon'  => 'Parent Quiz:',
-  			'not_found'          => 'No Quiz Found',
-  			'not_found_in_trash' => 'No Quiz Found In Trash'
+  			'add_new_item'       => 'Add New Plugin',
+  			'new_item'           => 'New Plugin',
+  			'edit_item'          => 'Edit Plugin',
+  			'view_item'          => 'View Plugin',
+  			'all_items'          => 'All Plugins',
+  			'search_items'       => 'Search Plugins',
+  			'parent_item_colon'  => 'Parent Plugin:',
+  			'not_found'          => 'No Plugin Found',
+  			'not_found_in_trash' => 'No Plugin Found In Trash'
   		);
 
       $args = array(

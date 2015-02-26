@@ -75,6 +75,10 @@ class WPDTPluginPage
   			add_post_meta( $new_plugin_id, 'plugin_slug', $new_plugin );
         add_post_meta( $new_plugin_id, 'average_review', $ratings );
         add_post_meta( $new_plugin_id, 'downloads', $plugin_info->downloaded );
+        add_post_meta( $new_plugin_id, 'version', $plugin_info->version );
+        add_post_meta( $new_plugin_id, 'last_updated', $plugin_info->last_updated );
+        add_post_meta( $new_plugin_id, 'description', $plugin_info->sections["description"] );
+        add_post_meta( $new_plugin_id, 'download_link', $plugin_info->download_link );
       }
       $plugin_array = array();
       $my_query = new WP_Query( array('post_type' => 'plugin') );
@@ -84,11 +88,14 @@ class WPDTPluginPage
     		{
     	    $my_query->the_post();
           $plugin_array[] = array(
+            'id' => get_the_ID(),
             'name' => get_the_title(),
             'slug' => get_post_meta( get_the_ID(), 'plugin_slug', true ),
             'permalink' => get_the_permalink(),
             'average_review' => get_post_meta( get_the_ID(), 'average_review', true ),
             'downloads' => get_post_meta( get_the_ID(), 'downloads', true ),
+            'last_updated' => get_post_meta( get_the_ID(), 'last_updated', true ),
+            'version' => get_post_meta( get_the_ID(), 'version', true ),
           );
     	  }
     	}
@@ -99,9 +106,12 @@ class WPDTPluginPage
           <table class="widefat">
             <thead>
               <tr>
+                <th>ID</th>
                 <th>Plugin</th>
                 <th>Average Review</th>
                 <th>Downloads</th>
+                <th>Version</th>
+                <th>Last Updated</th>
               </tr>
             </thead>
             <tbody>
@@ -109,18 +119,24 @@ class WPDTPluginPage
               foreach($plugin_array as $plugin)
               {
                 echo "<tr>";
+                echo "<td>".$plugin["id"]."</td>";
                 echo "<td>".$plugin["name"]."</td>";
                 echo "<td>".$plugin["average_review"]."</td>";
                 echo "<td>".$plugin["downloads"]."</td>";
+                echo "<td>".$plugin["version"]."</td>";
+                echo "<td>".$plugin["last_updated"]."</td>";
                 echo "</tr>";
               }
               ?>
             </tbody>
             <tfoot>
               <tr>
+                <th>ID</th>
                 <th>Plugin</th>
                 <th>Average Review</th>
                 <th>Downloads</th>
+                <th>Version</th>
+                <th>Last Updated</th>
               </tr>
             </tfoot>
           </table>
