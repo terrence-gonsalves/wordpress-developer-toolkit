@@ -1,19 +1,37 @@
 === WordPress Developer Toolkit ===
 Contributors: fpcorso
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RTGYAETX36ZQJ
-Tags: wordpress, developer, plugin
-Requires at least: 3.8.1
+Donate link: http://mylocalwebstop.com/downloads/donation-service-payment/
+Tags: wordpress, developer, plugin, stats, download, rating, review, description
+Requires at least: 3.9.1
 Tested up to: 4.1.1
 Stable tag: 0.1.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Useful Tools For Plugin Developers
+A plugin for WordPress developers.
 
 == Description ==
 
+WordPress Developer Toolkit is a handy tool for WordPress Developers. This plugin gives you 6 new shortcodes for displaying your WordPress plugins that are stored in the repository.
+Once you add your plugins, you will have 6 shortcodes:
+
+* Display Plugin Description
+* Display Plugin Download Count
+* Display Plugin Version
+* Display Plugin Average Rating
+* Display Date Of Last Update
+* Display Link To Plugin File
+
+All of this is synced to your plugin on the repository on a regular basic. So when you update your plugin, your shortcodes will automatically update.
+
+You also get a statistics page in the admin panel. The statistics page shows:
+
+* Number Of Plugins You Have Entered
+* Total Downloads Of All Plugins
+* Overall Average Rating Of All Plugins
+* Overall Average Downloads Per Plugin
 
 = Make Suggestions Or Contribute =
-WordPress Developer Toolkit is on [GitHub](https://github.com/fpcorso/wordpress-developer-toolkit)!
+WordPress Developer Toolkit is on [GitHub](https://github.com/fpcorso/wordpress-developer-toolkit)! I have plenty of items on my to-do list for this plugin. I would love to hear your feedback so feel free to open issues or comment on any existing ones. Feel free to fork and open pull requests!
 
 == Installation ==
 
@@ -30,16 +48,21 @@ WordPress Developer Toolkit is on [GitHub](https://github.com/fpcorso/wordpress-
 
 == Frequently Asked Questions ==
 
+= How Do I Find My Plugin's Slug? =
+There are a few ways. First, if you visit your plugin on wordpress.org, the end of the url is usually your slug. For example, the end of this plugin's page is wordpress-developer-toolkit. Also, your folder in the SVN repository is also your plugin's slug. Lastly, the folder that is created when installing your plugin is also the plugin's slug.
+
 = I have an idea, how do I contact you? =
-Feel free to use the support forums for this plugin or from the [My Local Webstop Contact Us Page](http://mylocalwebstop.com/contact-us/)
+Feel free to create an issue on [GitHub](https://github.com/fpcorso/wordpress-developer-toolkit) or use the [My Local Webstop Contact Us Page](http://mylocalwebstop.com/contact-us/)
 
 == Screenshots ==
 
-1. Example Tip
+1. Main Plugin Page To Enter Your Plugins
+2. Statistics Page
+3. Example Post With Shortcodes
 
 == Changelog ==
 
-= 0.1.0 (December 22, 2014) =
+= 0.1.0 (February 28, 2015) =
 * Initial Version
 
 == Upgrade Notice ==

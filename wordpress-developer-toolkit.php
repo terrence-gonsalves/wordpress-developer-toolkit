@@ -40,6 +40,14 @@ class MLWWPDeveloperToolkit
   	public $cronManager;
 
     /**
+     * WPDT Version Number
+     *
+     * @var string
+     * @since 0.1.0
+     */
+    public $version = '0.1.0';
+
+    /**
   	  * Main Construct Function
   	  *
   	  * Call functions within class
@@ -64,8 +72,12 @@ class MLWWPDeveloperToolkit
     public function load_dependencies()
     {
       include("php/wpdt_plugins_page.php");
+      include("php/wpdt_stats_page.php");
+      include("php/wpdt_about_page.php");
       include("php/wpdt_shortcodes.php");
+      include("php/wpdt_update.php");
       include("php/wpdt_cron.php");
+
       $this->cronManager = new WPDTCron();
     }
 
@@ -82,6 +94,8 @@ class MLWWPDeveloperToolkit
         add_action('admin_menu', array( $this, 'setup_admin_menu'));
         add_action('init', array( $this, 'register_post_types'));
         add_action('plugins_loaded',  array( $this, 'setup_translations'));
+        add_action('admin_head', array( $this, 'admin_head'), 900);
+        add_action('admin_init','wpdt_update');
     }
 
     /**
@@ -138,8 +152,29 @@ class MLWWPDeveloperToolkit
   		if (function_exists('add_menu_page'))
   		{
         add_menu_page('WP Dev Toolkit', 'WP Dev Toolkit', 'moderate_comments', __FILE__, array('WPDTPluginPage','generate_page'), 'dashicons-flag');
+        add_submenu_page(__FILE__, __('Stats', 'wordpress-developer-toolkit'), __('Stats', 'wordpress-developer-toolkit'), 'moderate_comments', 'wpdt_stats', array('WPDTStatsPage','generate_page'));
       }
+      add_dashboard_page(
+				__( 'WPDT About', 'wordpress-developer-toolkit' ),
+				__( 'WPDT About', 'wordpress-developer-toolkit' ),
+				'manage_options',
+				'wpdt_about',
+				array('WPDTAboutPage', 'generate_page')
+			);
     }
+
+    /**
+  	 * Removes Unnecessary Admin Page
+  	 *
+  	 * Removes the update, quiz settings, and quiz results pages from the Quiz Menu
+  	 *
+  	 * @since 4.1.0
+  	 * @return void
+  	 */
+  	public function admin_head()
+  	{
+  		remove_submenu_page( 'index.php', 'wpdt_about' );
+  	}
 
     /**
   	  * Loads the plugin language files

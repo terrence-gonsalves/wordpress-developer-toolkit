@@ -104,6 +104,7 @@ class WPDTPluginPage
   					wp_update_post( $my_post );
   			  }
   			}
+        wp_reset_postdata();
         do_action('wpdt_delete_plugin', $plugin_id);
       }
       $plugin_array = array();
@@ -142,9 +143,6 @@ class WPDTPluginPage
       			</div>
             <div class="templates_shortcode">
       				<span class="templates_name">[plugin_version id=?]</span> - <?php _e("Outputs the version of the plugin where ? is the id of the plugin below", 'wordpress-developer-toolkit'); ?>
-      			</div>
-            <div class="templates_shortcode">
-      				<span class="templates_name">[plugin_rating id=?]</span> - <?php _e("Outputs the average rating of the plugin where ? is the id of the plugin below", 'wordpress-developer-toolkit'); ?>
       			</div>
             <div class="templates_shortcode">
       				<span class="templates_name">[plugin_rating id=?]</span> - <?php _e("Outputs the average rating of the plugin where ? is the id of the plugin below", 'wordpress-developer-toolkit'); ?>
