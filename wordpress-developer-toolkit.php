@@ -6,6 +6,8 @@
  * Author: Frank Corso
  * Author URI: http://mylocalwebstop.com
  * Version: 0.1.0
+ * Text Domain: wordpress-developer-toolkit
+ * Domain Path: /languages
  *
  * Disclaimer of Warranties
  * The plugin is provided "as is". My Local Webstop and its suppliers and licensors hereby disclaim all warranties of any kind,
@@ -30,6 +32,14 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class MLWWPDeveloperToolkit
 {
     /**
+  	 * Cron Manager Object
+  	 *
+  	 * @var object
+  	 * @since 0.1.0
+  	 */
+  	public $cronManager;
+
+    /**
   	  * Main Construct Function
   	  *
   	  * Call functions within class
@@ -53,8 +63,10 @@ class MLWWPDeveloperToolkit
   	  */
     public function load_dependencies()
     {
-      include("php/wpdt_plugins.php");
+      include("php/wpdt_plugins_page.php");
       include("php/wpdt_shortcodes.php");
+      include("php/wpdt_cron.php");
+      $this->cronManager = new WPDTCron();
     }
 
     /**
@@ -69,6 +81,7 @@ class MLWWPDeveloperToolkit
     {
         add_action('admin_menu', array( $this, 'setup_admin_menu'));
         add_action('init', array( $this, 'register_post_types'));
+        add_action('plugins_loaded',  array( $this, 'setup_translations'));
     }
 
     /**
@@ -124,9 +137,20 @@ class MLWWPDeveloperToolkit
   	{
   		if (function_exists('add_menu_page'))
   		{
-        add_menu_page('WP Dev Toolkit', __('WP Dev Toolkit', 'quiz-master-next'), 'moderate_comments', __FILE__, array('WPDTPluginPage','generate_page'), 'dashicons-feedback');
+        add_menu_page('WP Dev Toolkit', 'WP Dev Toolkit', 'moderate_comments', __FILE__, array('WPDTPluginPage','generate_page'), 'dashicons-flag');
       }
     }
+
+    /**
+  	  * Loads the plugin language files
+  	  *
+  	  * @since 0.1.0
+  	  * @return void
+  	  */
+  	public function setup_translations()
+  	{
+  		load_plugin_textdomain( 'wordpress-developer-toolkit', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+  	}
 }
 $mlwWPDeveloperToolkit = new MLWWPDeveloperToolkit();
 ?>
