@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 /**
   * This class is the main class of the plugin
   *
@@ -55,6 +56,10 @@ class WPDTStatsPage
      */
      public static function generate_page()
      {
+      if ( !current_user_can('moderate_comments') ) {
+        echo __("You do not have proper authority to access this page",'wordpress-developer-toolkit');
+        return '';
+      }
       wp_enqueue_style( 'wpdt_admin_style', plugins_url( '../css/admin.css' , __FILE__ ) );
       wp_enqueue_script( 'wpdt_admin_script', plugins_url( '../js/admin.js' , __FILE__ ) );
       wp_enqueue_script( 'wpdt_chartjs_script', plugins_url( '../js/Chart.min.js' , __FILE__ ) );
@@ -81,47 +86,52 @@ class WPDTStatsPage
 
       $downloads = 0;
       $ratings = 0;
+      $rated = 0;
       $plugin_labels = "";
       $plugin_values = "";
       $total_plugins = count($plugin_array);
       foreach($plugin_array as $plugin)
       {
         $downloads += $plugin["downloads"];
-        $ratings += $plugin["average_review"];
+        if ($plugin["average_review"] != 0)
+        {
+          $ratings += $plugin["average_review"];
+          $rated += 1;
+        }
         $plugin_labels .= '"'.$plugin["name"].'",';
         $plugin_values .= $plugin["downloads"].',';
       }
-      $ratings = round($ratings/$total_plugins, 2);
+      $ratings = round($ratings/$rated, 2);
       $average_downloads = round($downloads/$total_plugins, 2);
       ?>
       <div class="wrap">
         <h2><?php _e('Your Stats','wordpress-developer-toolkit'); ?></h2>
         <div class="stat_section">
-          <div class="stat_section_title">Total Plugins</div>
+          <div class="stat_section_title"><?php _e('Total Plugins','wordpress-developer-toolkit'); ?></div>
           <div class="stat_section_count">
             <?php echo $total_plugins; ?>
           </div>
         </div>
         <div class="stat_section">
-          <div class="stat_section_title">Average Downloads</div>
+          <div class="stat_section_title"><?php _e('Average Downloads','wordpress-developer-toolkit'); ?></div>
           <div class="stat_section_count">
             <?php echo $average_downloads; ?>
           </div>
         </div>
         <div class="stat_section">
-          <div class="stat_section_title">Average Rating</div>
+          <div class="stat_section_title"><?php _e('Average Rating','wordpress-developer-toolkit'); ?></div>
           <div class="stat_section_count">
             <?php echo $ratings; ?>
           </div>
         </div>
         <div class="stat_section">
-          <div class="stat_section_title">Total Downloads</div>
+          <div class="stat_section_title"><?php _e('Total Downloads','wordpress-developer-toolkit'); ?></div>
           <div class="stat_section_count">
             <?php echo $downloads; ?>
           </div>
         </div>
           <div class="stat_section">
-            <div class="stat_section_title">Total Plugin Downloads</div>
+            <div class="stat_section_title"><?php _e('Total Plugin Downloads','wordpress-developer-toolkit'); ?></div>
             <div class="stat_section_count">
               <canvas id="plugin_bar_graph" width="500" height="500"/>
             </div>
