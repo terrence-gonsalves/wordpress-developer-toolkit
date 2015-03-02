@@ -56,6 +56,8 @@ class WPDTStatsPage
      public static function generate_page()
      {
       wp_enqueue_style( 'wpdt_admin_style', plugins_url( '../css/admin.css' , __FILE__ ) );
+      wp_enqueue_script( 'wpdt_admin_script', plugins_url( '../js/admin.js' , __FILE__ ) );
+      wp_enqueue_script( 'wpdt_chartjs_script', plugins_url( '../js/Chart.min.js' , __FILE__ ) );
       $plugin_array = array();
       $my_query = new WP_Query( array('post_type' => 'plugin') );
       if( $my_query->have_posts() )
@@ -79,11 +81,15 @@ class WPDTStatsPage
 
       $downloads = 0;
       $ratings = 0;
+      $plugin_labels = "";
+      $plugin_values = "";
       $total_plugins = count($plugin_array);
       foreach($plugin_array as $plugin)
       {
         $downloads += $plugin["downloads"];
         $ratings += $plugin["average_review"];
+        $plugin_labels .= '"'.$plugin["name"].'",';
+        $plugin_values .= $plugin["downloads"].',';
       }
       $ratings = round($ratings/$total_plugins, 2);
       $average_downloads = round($downloads/$total_plugins, 2);
@@ -94,12 +100,6 @@ class WPDTStatsPage
           <div class="stat_section_title">Total Plugins</div>
           <div class="stat_section_count">
             <?php echo $total_plugins; ?>
-          </div>
-        </div>
-        <div class="stat_section">
-          <div class="stat_section_title">Total Downloads</div>
-          <div class="stat_section_count">
-            <?php echo $downloads; ?>
           </div>
         </div>
         <div class="stat_section">
@@ -114,6 +114,42 @@ class WPDTStatsPage
             <?php echo $ratings; ?>
           </div>
         </div>
+        <div class="stat_section">
+          <div class="stat_section_title">Total Downloads</div>
+          <div class="stat_section_count">
+            <?php echo $downloads; ?>
+          </div>
+        </div>
+          <div class="stat_section">
+            <div class="stat_section_title">Total Plugin Downloads</div>
+            <div class="stat_section_count">
+              <canvas id="plugin_bar_graph" width="500" height="500"/>
+            </div>
+          </div>
+        <div>
+
+      	</div>
+      	<script>
+        var plugin_bar_data = {
+            labels: [<?php echo $plugin_labels; ?>],
+            datasets: [
+                {
+                    label: "My First dataset",
+                    fillColor: "rgba(151,187,205,0.5)",
+                    strokeColor: "rgba(151,187,205,0.8)",
+                    highlightFill: "rgba(151,187,205,0.75)",
+                    highlightStroke: "rgba(151,187,205,1)",
+                    data: [<?php echo $plugin_values; ?>]
+                },
+            ]
+        };
+        window.onload = function(){
+    			var plugin_bar_ctx = document.getElementById("plugin_bar_graph").getContext("2d");
+    			window.plugin_bar_graph = new Chart(plugin_bar_ctx).Bar(plugin_bar_data, {
+    				responsive: true
+    			});
+        }
+      	</script>
       </div>
       <?php
      }
