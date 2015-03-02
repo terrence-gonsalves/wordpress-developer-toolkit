@@ -77,6 +77,7 @@ class MLWWPDeveloperToolkit
       include("php/wpdt_shortcodes.php");
       include("php/wpdt_update.php");
       include("php/wpdt_cron.php");
+      include("php/wpdt_refresh.php");
 
       $this->cronManager = new WPDTCron();
     }
