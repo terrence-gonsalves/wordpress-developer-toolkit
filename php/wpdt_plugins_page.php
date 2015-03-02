@@ -163,12 +163,11 @@ class WPDTPluginPage
             </div>
           </section>
           <section class="info_section">
-            <h3 class="info_section_title">Your Plugins</h3>
+            <h3 class="info_section_title">Your Plugins<a href="#" onclick="document.refresh_form.submit();" class="add-new-h2">Refresh Now</a></h3>
             <div class="info_section_content">
-              <form action="" method="post">
+              <form action="" name="refresh_form" method="post">
                 <input type="hidden" name="refresh_plugins_form" value="confirmation" />
                 <?php wp_nonce_field('refresh_plugins','refresh_plugins_nonce'); ?>
-                <input type="submit" value="Refresh Now" class="button-primary" />
               </form>
               <table class="widefat">
                 <thead>
