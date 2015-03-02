@@ -59,6 +59,7 @@ Feel free to create an issue on [GitHub](https://github.com/fpcorso/wordpress-de
 1. Main Plugin Page To Enter Your Plugins
 2. Statistics Page
 3. Example Post With Shortcodes
+4. Graph Comparing Plugin Downloads
 
 == Changelog ==
 
