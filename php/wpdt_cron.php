@@ -89,12 +89,12 @@ class WPDTCron
         $response = wp_remote_get( "http://api.wordpress.org/plugins/info/1.0/$slug" );
         $plugin_info = unserialize( $response['body'] );
         $ratings = round(($plugin_info->rating/20), 1);
-        add_post_meta( $id, 'average_review', $ratings );
-        add_post_meta( $id, 'downloads', $plugin_info->downloaded );
-        add_post_meta( $id, 'version', $plugin_info->version );
-        add_post_meta( $id, 'last_updated', $plugin_info->last_updated );
-        add_post_meta( $id, 'description', $plugin_info->sections["description"] );
-        add_post_meta( $id, 'download_link', $plugin_info->download_link );
+        update_post_meta( $id, 'average_review', $ratings );
+        update_post_meta( $id, 'downloads', $plugin_info->downloaded );
+        update_post_meta( $id, 'version', $plugin_info->version );
+        update_post_meta( $id, 'last_updated', $plugin_info->last_updated );
+        update_post_meta( $id, 'description', $plugin_info->sections["description"] );
+        update_post_meta( $id, 'download_link', $plugin_info->download_link );
       }
     }
 }
