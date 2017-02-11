@@ -1,16 +1,14 @@
 === WordPress Developer Toolkit ===
-Contributors: fpcorso
-Donate link: http://mylocalwebstop.com/downloads/donation-service-payment/
+Contributors: tegonsalves, fpcorso
 Tags: wordpress, developer, plugin, stats, download, rating, review, description
 Requires at least: 3.9.1
 Tested up to: 4.2
-Stable tag: 0.2.1
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Stable tag: 0.2.2
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 A plugin for WordPress developers.
 
 == Description ==
-
 WordPress Developer Toolkit is a handy tool for WordPress Developers. This plugin gives you 6 new shortcodes for displaying your WordPress plugins that are stored in the repository.
 Once you add your plugins, you will have 6 shortcodes:
 
