@@ -7,8 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
   *
   * @since 0.1.0
   */
-class WPDTPluginPage
-{
+class WPDTPluginPage {
     /**
   	  * Main Construct Function
   	  *
@@ -19,8 +18,7 @@ class WPDTPluginPage
   	  * @uses WPDTPluginPage::add_hooks() Adds actions to hooks and filters
   	  * @return void
   	  */
-    function __construct()
-    {
+    function __construct() {
       $this->load_dependencies();
       $this->add_hooks();
     }
@@ -31,8 +29,7 @@ class WPDTPluginPage
   	  * @since 0.1.0
   	  * @return void
   	  */
-    public function load_dependencies()
-    {
+    public function load_dependencies() {
 
     }
 
@@ -44,8 +41,7 @@ class WPDTPluginPage
   	  * @since 0.1.0
   	  * @return void
   	  */
-    public function add_hooks()
-    {
+    public function add_hooks() {
 
     }
 
@@ -54,28 +50,30 @@ class WPDTPluginPage
      *
      * @since 0.1.0
      */
-    public static function generate_page()
-    {
-      if ( !current_user_can('moderate_comments') ) {
+    public static function generate_page() {
+      if ( ! current_user_can( 'moderate_comments' ) ) {
         echo __("You do not have proper authority to access this page",'wordpress-developer-toolkit');
         return '';
       }
+
       wp_enqueue_style( 'wpdt_admin_style', plugins_url( '../css/admin.css' , __FILE__ ) );
       wp_enqueue_script( 'wpdt_admin_script', plugins_url( '../js/admin.js' , __FILE__ ) );
-      if (isset($_POST["refresh_plugins_form"]) && wp_verify_nonce( $_POST['refresh_plugins_nonce'], 'refresh_plugins'))
-      {
+
+      if ( isset($_POST["refresh_plugins_form"] ) && wp_verify_nonce( $_POST['refresh_plugins_nonce'], 'refresh_plugins' ) ) {
         $refresh = new WPDTRefresh();
         $refresh->refresh();
       }
 
-      if (isset($_POST["new_plugin"]) && wp_verify_nonce( $_POST['add_plugin_nonce'], 'add_plugin'))
-      {
-        $new_plugin = sanitize_text_field($_POST["new_plugin"]);
+      if ( isset($_POST["new_plugin"]) && wp_verify_nonce( $_POST['add_plugin_nonce'], 'add_plugin' ) ) {
+        $new_plugin = sanitize_text_field( $_POST["new_plugin"]) ;
         $response = wp_remote_get( "http://api.wordpress.org/plugins/info/1.0/$new_plugin" );
         $plugin_info = unserialize( $response['body'] );
         $ratings = round(($plugin_info->rating/20), 1);
+
         global $current_user;
+
   			get_currentuserinfo();
+
   			$new_plugin_args = array(
   			  'post_title'    => $plugin_info->name,
   			  'post_content'  => "",
@@ -83,7 +81,9 @@ class WPDTPluginPage
   			  'post_author'   => $current_user->ID,
   			  'post_type' => 'plugin'
   			);
+
   			$new_plugin_id = wp_insert_post( $new_plugin_args );
+
   			add_post_meta( $new_plugin_id, 'plugin_slug', $new_plugin, true );
         add_post_meta( $new_plugin_id, 'average_review', $ratings, true );
         add_post_meta( $new_plugin_id, 'downloads', $plugin_info->downloaded, true );
@@ -94,14 +94,12 @@ class WPDTPluginPage
         do_action('wpdt_new_plugin', $plugin_info);
       }
 
-      if (isset($_POST["delete_plugin"]) && wp_verify_nonce( $_POST['delete_plugin_nonce'], 'delete_plugin'))
-      {
+      if ( isset($_POST["delete_plugin"]) && wp_verify_nonce( $_POST['delete_plugin_nonce'], 'delete_plugin' ) ) {
         $plugin_id = intval($_POST["delete_plugin"]);
         $my_query = new WP_Query( array('post_type' => 'plugin', 'p' => $plugin_id) );
-  			if( $my_query->have_posts() )
-  			{
-  			  while( $my_query->have_posts() )
-  				{
+
+  			if ( $my_query->have_posts() ) {
+  			  while ( $my_query->have_posts() ) {
   			    $my_query->the_post();
   					$my_post = array(
   				      'ID'           => get_the_ID(),
@@ -110,15 +108,17 @@ class WPDTPluginPage
   					wp_update_post( $my_post );
   			  }
   			}
+
         wp_reset_postdata();
         do_action('wpdt_delete_plugin', $plugin_id);
       }
+
       $plugin_array = array();
+
       $my_query = new WP_Query( array('post_type' => 'plugin') );
-    	if( $my_query->have_posts() )
-    	{
-    	  while( $my_query->have_posts() )
-    		{
+
+    	if ( $my_query->have_posts() ) {
+    	  while ( $my_query->have_posts() ) {
     	    $my_query->the_post();
           $plugin_array[] = array(
             'id' => get_the_ID(),
@@ -132,8 +132,10 @@ class WPDTPluginPage
           );
     	  }
     	}
+
     	wp_reset_postdata();
       ?>
+
       <div class="wrap">
           <h2>WordPress Developer Toolkit</h2>
           <section class="info_section">
@@ -231,6 +233,7 @@ class WPDTPluginPage
             </div>
           </section>
       </div>
+      
       <?php
     }
 }

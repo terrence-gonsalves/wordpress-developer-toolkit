@@ -3,7 +3,7 @@ Contributors: tegonsalves, fpcorso
 Tags: wordpress, developer, plugin, stats, download, rating, review, description
 Requires at least: 3.9.1
 Tested up to: 4.2
-Stable tag: 0.2.1
+Stable tag: 0.2.3
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 A plugin for WordPress developers.
@@ -30,7 +30,7 @@ You also get a statistics page in the admin panel. The statistics page shows:
 * Overall Average Downloads Per Plugin
 
 = Make Suggestions Or Contribute =
-WordPress Developer Toolkit is on [GitHub](https://github.com/fpcorso/wordpress-developer-toolkit)! I have plenty of items on my to-do list for this plugin. I would love to hear your feedback so feel free to open issues or comment on any existing ones. Feel free to fork and open pull requests!
+WordPress Developer Toolkit is on [GitHub](https://github.com/tegonsalves/wordpress-developer-toolkit)!
 
 == Installation ==
 
@@ -51,7 +51,7 @@ WordPress Developer Toolkit is on [GitHub](https://github.com/fpcorso/wordpress-
 There are a few ways. First, if you visit your plugin on wordpress.org, the end of the url is usually your slug. For example, the end of this plugin's page is wordpress-developer-toolkit. Also, your folder in the SVN repository is also your plugin's slug. Lastly, the folder that is created when installing your plugin is also the plugin's slug.
 
 = I have an idea, how do I contact you? =
-Feel free to create an issue on [GitHub](https://github.com/fpcorso/wordpress-developer-toolkit) or use the [My Local Webstop Contact Us Page](http://mylocalwebstop.com/contact-us/)
+Feel free to create an issue on [GitHub](https://github.com/tegonsalves/wordpress-developer-toolkit/issues)
 
 == Screenshots ==
 

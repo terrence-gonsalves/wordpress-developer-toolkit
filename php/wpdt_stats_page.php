@@ -1,5 +1,8 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
+
+//TODO: remove this class as it serves no purpose
+
 /**
   * This class is the main class of the plugin
   *
@@ -7,8 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
   *
   * @since 0.1.0
   */
-class WPDTStatsPage
-{
+class WPDTStatsPage {
     /**
   	  * Main Construct Function
   	  *
@@ -19,8 +21,7 @@ class WPDTStatsPage
   	  * @uses WPDTStatsPage::add_hooks() Adds actions to hooks and filters
   	  * @return void
   	  */
-    function __construct()
-    {
+    function __construct() {
       $this->load_dependencies();
       $this->add_hooks();
     }
@@ -54,21 +55,22 @@ class WPDTStatsPage
      *
      * @since 0.1.0
      */
-     public static function generate_page()
-     {
+     public static function generate_page() {
       if ( !current_user_can('moderate_comments') ) {
         echo __("You do not have proper authority to access this page",'wordpress-developer-toolkit');
         return '';
       }
+
       wp_enqueue_style( 'wpdt_admin_style', plugins_url( '../css/admin.css' , __FILE__ ) );
       wp_enqueue_script( 'wpdt_admin_script', plugins_url( '../js/admin.js' , __FILE__ ) );
       wp_enqueue_script( 'wpdt_chartjs_script', plugins_url( '../js/Chart.min.js' , __FILE__ ) );
+
       $plugin_array = array();
+
       $my_query = new WP_Query( array('post_type' => 'plugin') );
-      if( $my_query->have_posts() )
-      {
-        while( $my_query->have_posts() )
-        {
+
+      if ( $my_query->have_posts() ) {
+        while( $my_query->have_posts() ) {
           $my_query->the_post();
           $plugin_array[] = array(
             'id' => get_the_ID(),
@@ -82,6 +84,7 @@ class WPDTStatsPage
           );
         }
       }
+
       wp_reset_postdata();
 
       $downloads = 0;
@@ -90,20 +93,23 @@ class WPDTStatsPage
       $plugin_labels = "";
       $plugin_values = "";
       $total_plugins = count($plugin_array);
-      foreach($plugin_array as $plugin)
-      {
+
+      foreach ( $plugin_array as $plugin ) {
         $downloads += $plugin["downloads"];
-        if ($plugin["average_review"] != 0)
-        {
+
+        if ( 0 !== $plugin["average_review"] ) {
           $ratings += $plugin["average_review"];
           $rated += 1;
         }
+
         $plugin_labels .= '"'.$plugin["name"].'",';
         $plugin_values .= $plugin["downloads"].',';
       }
+
       $ratings = round($ratings/$rated, 2);
       $average_downloads = round($downloads/$total_plugins, 2);
       ?>
+
       <div class="wrap">
         <h2><?php _e('Your Stats','wordpress-developer-toolkit'); ?></h2>
         <div class="stat_section">

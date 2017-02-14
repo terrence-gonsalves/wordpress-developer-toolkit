@@ -7,8 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
   *
   * @since 0.1.0
   */
-class WPDTAboutPage
-{
+class WPDTAboutPage {
     /**
   	  * Main Construct Function
   	  *
@@ -19,8 +18,7 @@ class WPDTAboutPage
   	  * @uses WPDTAboutPage::add_hooks() Adds actions to hooks and filters
   	  * @return void
   	  */
-    function __construct()
-    {
+    function __construct() {
       $this->load_dependencies();
       $this->add_hooks();
     }
@@ -31,8 +29,7 @@ class WPDTAboutPage
   	  * @since 0.1.0
   	  * @return void
   	  */
-    public function load_dependencies()
-    {
+    public function load_dependencies() {
 
     }
 
@@ -44,8 +41,7 @@ class WPDTAboutPage
   	  * @since 0.1.0
   	  * @return void
   	  */
-    public function add_hooks()
-    {
+    public function add_hooks() {
 
     }
 
@@ -54,14 +50,14 @@ class WPDTAboutPage
      *
      * @since 0.1.0
      */
-    public static function generate_page()
-    {
+    public static function generate_page() {
       global $mlwWPDeveloperToolkit;
     	$version = $mlwWPDeveloperToolkit->version;
     	wp_enqueue_script( 'jquery' );
       wp_enqueue_style( 'wpdt_admin_style', plugins_url( '../css/admin.css' , __FILE__ ) );
       wp_enqueue_script( 'wpdt_admin_script', plugins_url( '../js/admin.js' , __FILE__ ) );
       ?>
+
     	<div class="wrap about-wrap">
       	<h1><?php _e('Welcome To WordPress Developer Toolkit', 'wordpress-developer-toolkit'); ?></h1>
       	<div class="about-text"><?php _e('Thank you for updating!', 'wordpress-developer-toolkit'); ?></div>
@@ -101,6 +97,7 @@ class WPDTAboutPage
       	</div>
 
     	</div>
+      
       <?php
     }
 }

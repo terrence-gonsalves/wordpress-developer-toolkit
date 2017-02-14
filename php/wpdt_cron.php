@@ -7,8 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
   *
   * @since 0.1.0
   */
-class WPDTCron
-{
+class WPDTCron {
     /**
   	  * Main Construct Function
   	  *
@@ -19,8 +18,7 @@ class WPDTCron
   	  * @uses WPDTCron::add_hooks() Adds actions to hooks and filters
   	  * @return void
   	  */
-    function __construct()
-    {
+    function __construct() {
       $this->load_dependencies();
       $this->add_hooks();
     }
@@ -31,8 +29,7 @@ class WPDTCron
   	  * @since 0.1.0
   	  * @return void
   	  */
-    public function load_dependencies()
-    {
+    public function load_dependencies() {
 
     }
 
@@ -44,8 +41,7 @@ class WPDTCron
   	  * @since 0.1.0
   	  * @return void
   	  */
-    public function add_hooks()
-    {
+    public function add_hooks() {
       add_action( 'plugins_loaded', array($this, 'cron_check') );
       add_action( 'wpdt_nightly_event', array($this,'cron') );
     }
@@ -55,8 +51,7 @@ class WPDTCron
      *
      * @since 0.1.0
      */
-    public function cron_check()
-    {
+    public function cron_check() {
       if ( ! wp_next_scheduled( 'wpdt_nightly_event' ) ) {
     		wp_schedule_event( current_time('timestamp'), 'daily', 'wpdt_nightly_event');
     	}
@@ -67,11 +62,8 @@ class WPDTCron
      *
      * @since 0.1.0
      */
-    public function cron()
-    {
+    public function cron() {
       $refresh = new WPDTRefresh();
       $refresh->refresh();
     }
 }
-
-?>

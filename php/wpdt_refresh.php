@@ -7,8 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 *
 * @since 0.2.0
 */
-class WPDTRefresh
-{
+class WPDTRefresh {
     /**
   	  * Main Construct Function
   	  *
@@ -19,8 +18,7 @@ class WPDTRefresh
   	  * @uses WPDTRefresh::add_hooks() Adds actions to hooks and filters
   	  * @return void
   	  */
-    function __construct()
-    {
+    function __construct() {
       $this->load_dependencies();
       $this->add_hooks();
     }
@@ -31,8 +29,7 @@ class WPDTRefresh
   	  * @since 0.2.0
   	  * @return void
   	  */
-    public function load_dependencies()
-    {
+    public function load_dependencies() {
 
     }
 
@@ -44,8 +41,7 @@ class WPDTRefresh
   	  * @since 0.2.0
   	  * @return void
   	  */
-    public function add_hooks()
-    {
+    public function add_hooks() {
 
     }
 
@@ -55,14 +51,12 @@ class WPDTRefresh
   	  * @since 0.2.0
   	  * @return void
   	  */
-    public function refresh()
-    {
+    public function refresh() {
       $plugins_list = array();
       $my_query = new WP_Query( array('post_type' => 'plugin') );
-    	if( $my_query->have_posts() )
-    	{
-    	  while( $my_query->have_posts() )
-    		{
+
+    	if ( $my_query->have_posts() ) {
+    	  while ( $my_query->have_posts() ) {
     	    $my_query->the_post();
           $plugins_list[] = array(
             'slug' => get_post_meta( get_the_ID(), 'plugin_slug', true ),
@@ -70,9 +64,10 @@ class WPDTRefresh
           );
     	  }
     	}
+
       wp_reset_postdata();
-      foreach($plugins_list as $plugin)
-      {
+
+      foreach ($plugins_list as $plugin) {
         $slug = $plugin["slug"];
         $id = $plugin["id"];
         $response = wp_remote_get( "http://api.wordpress.org/plugins/info/1.0/$slug" );
@@ -87,4 +82,3 @@ class WPDTRefresh
       }
     }
 }
-?>
