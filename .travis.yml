@@ -1,0 +1,13 @@
+language: php
+
+notifications:
+  email: false
+
+  slack: wordpress-development:cRbluQg76eR6VdhqHDzDS4dO
+
+php:
+  - "7.0"
+  - "5.5"
+
+env:
+  - WP_VERSION=latest
