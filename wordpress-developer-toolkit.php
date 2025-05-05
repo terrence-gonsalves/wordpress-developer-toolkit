@@ -199,12 +199,12 @@ if ( ! class_exists( 'Developer_Toolkit' ) ) {
         //TODO: move this to a seperate file and it will be loaded from admin() function
         if ( function_exists('add_menu_page') ) {
           add_menu_page('WP Dev Toolkit', 'WP Dev Toolkit', 'moderate_comments', __FILE__, array('WPDTPluginPage','generate_page'), 'dashicons-flag');
-          add_submenu_page(__FILE__, __('Stats', 'wordpress-developer-toolkit'), __('Stats', 'wordpress-developer-toolkit'), 'moderate_comments', 'wpdt_stats', array('WPDTStatsPage','generate_page'));
+          add_submenu_page(__FILE__, __('Stats', 'developer-toolkit'), __('Stats', 'developer-toolkit'), 'moderate_comments', 'wpdt_stats', array('WPDTStatsPage','generate_page'));
         }
 
         add_dashboard_page(
-        	__( 'WPDT About', 'wordpress-developer-toolkit' ),
-        	__( 'WPDT About', 'wordpress-developer-toolkit' ),
+        	__( 'WPDT About', 'developer-toolkit' ),
+        	__( 'WPDT About', 'developer-toolkit' ),
         	'manage_options',
         	'wpdt_about',
         	array('WPDTAboutPage', 'generate_page')
@@ -232,7 +232,7 @@ if ( ! class_exists( 'Developer_Toolkit' ) ) {
     	  * @return void
     	  */
     	public function setup_translations() {
-          load_plugin_textdomain( 'wordpress-developer-toolkit', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+          load_plugin_textdomain( 'developer-toolkit', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
     	}
   }
 

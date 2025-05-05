@@ -52,7 +52,7 @@ class WPDTPluginPage {
      */
     public static function generate_page() {
       if ( ! current_user_can( 'moderate_comments' ) ) {
-        echo __("You do not have proper authority to access this page",'wordpress-developer-toolkit');
+        echo __("You do not have proper authority to access this page",'developer-toolkit');
         return '';
       }
 
@@ -139,33 +139,33 @@ class WPDTPluginPage {
       <div class="wrap">
           <h2>WordPress Developer Toolkit</h2>
           <section class="info_section">
-            <h3 class="info_section_title"><?php _e('Available Shortcodes','wordpress-developer-toolkit'); ?></h3>
+            <h3 class="info_section_title"><?php _e('Available Shortcodes','developer-toolkit'); ?></h3>
             <div class="info_section_content">
               <div class="templates">
           			<div class="templates_shortcode">
-          				<span class="templates_name">[plugin_desc id=?]</span> - <?php _e("Outputs the plugin's description where ? is the id of the plugin below", 'wordpress-developer-toolkit'); ?>
+          				<span class="templates_name">[plugin_desc id=?]</span> - <?php _e("Outputs the plugin's description where ? is the id of the plugin below", 'developer-toolkit'); ?>
           			</div>
                 <div class="templates_shortcode">
-          				<span class="templates_name">[plugin_link id=? link=?]</span> - <?php _e("Outputs the link to download the plugin where ? is the id of the plugin below and the text for the link", 'wordpress-developer-toolkit'); ?>
+          				<span class="templates_name">[plugin_link id=? link=?]</span> - <?php _e("Outputs the link to download the plugin where ? is the id of the plugin below and the text for the link", 'developer-toolkit'); ?>
           			</div>
                 <div class="templates_shortcode">
-          				<span class="templates_name">[plugin_download_count id=?]</span> - <?php _e("Outputs the amount of times the plugin has been downloaded where ? is the id of the plugin below", 'wordpress-developer-toolkit'); ?>
+          				<span class="templates_name">[plugin_download_count id=?]</span> - <?php _e("Outputs the amount of times the plugin has been downloaded where ? is the id of the plugin below", 'developer-toolkit'); ?>
           			</div>
                 <div class="templates_shortcode">
-          				<span class="templates_name">[plugin_version id=?]</span> - <?php _e("Outputs the version of the plugin where ? is the id of the plugin below", 'wordpress-developer-toolkit'); ?>
+          				<span class="templates_name">[plugin_version id=?]</span> - <?php _e("Outputs the version of the plugin where ? is the id of the plugin below", 'developer-toolkit'); ?>
           			</div>
                 <div class="templates_shortcode">
-          				<span class="templates_name">[plugin_rating id=?]</span> - <?php _e("Outputs the average rating of the plugin where ? is the id of the plugin below", 'wordpress-developer-toolkit'); ?>
+          				<span class="templates_name">[plugin_rating id=?]</span> - <?php _e("Outputs the average rating of the plugin where ? is the id of the plugin below", 'developer-toolkit'); ?>
           			</div>
                 <div class="templates_shortcode">
-          				<span class="templates_name">[plugin_updated id=?]</span> - <?php _e("Outputs the date of the last time the plugin was updated where ? is the id of the plugin below", 'wordpress-developer-toolkit'); ?>
+          				<span class="templates_name">[plugin_updated id=?]</span> - <?php _e("Outputs the date of the last time the plugin was updated where ? is the id of the plugin below", 'developer-toolkit'); ?>
           			</div>
                 <?php do_action('wpdt_extra_shortcodes'); ?>
               </div>
             </div>
           </section>
           <section class="info_section">
-            <h3 class="info_section_title"><?php _e('Your Plugins','wordpress-developer-toolkit'); ?><a href="#" onclick="document.refresh_form.submit();" class="add-new-h2">Refresh Now</a></h3>
+            <h3 class="info_section_title"><?php _e('Your Plugins','developer-toolkit'); ?><a href="#" onclick="document.refresh_form.submit();" class="add-new-h2">Refresh Now</a></h3>
             <div class="info_section_content">
               <form action="" name="refresh_form" method="post">
                 <input type="hidden" name="refresh_plugins_form" value="confirmation" />
@@ -174,12 +174,12 @@ class WPDTPluginPage {
               <table class="widefat">
                 <thead>
                   <tr>
-                    <th><?php _e('ID','wordpress-developer-toolkit'); ?></th>
-                    <th><?php _e('Plugin','wordpress-developer-toolkit'); ?></th>
-                    <th><?php _e('Average Rating','wordpress-developer-toolkit'); ?></th>
-                    <th><?php _e('Downloads','wordpress-developer-toolkit'); ?></th>
-                    <th><?php _e('Version','wordpress-developer-toolkit'); ?></th>
-                    <th><?php _e('Last Updated','wordpress-developer-toolkit'); ?></th>
+                    <th><?php _e('ID','developer-toolkit'); ?></th>
+                    <th><?php _e('Plugin','developer-toolkit'); ?></th>
+                    <th><?php _e('Average Rating','developer-toolkit'); ?></th>
+                    <th><?php _e('Downloads','developer-toolkit'); ?></th>
+                    <th><?php _e('Version','developer-toolkit'); ?></th>
+                    <th><?php _e('Last Updated','developer-toolkit'); ?></th>
                   </tr>
                 </thead>
                 <tbody id="the-list">
@@ -194,9 +194,9 @@ class WPDTPluginPage {
                     echo "<td>";
                       echo $plugin["name"];
                       echo "<div class=\"row-actions\">
-          						      <a class='linkOptions linkDelete' onclick=\"jQuery('#want_to_delete_".$plugin["id"]."').show();\" href='#'>".__('Delete', 'wordpress-developer-toolkit')."</a>
+          						      <a class='linkOptions linkDelete' onclick=\"jQuery('#want_to_delete_".$plugin["id"]."').show();\" href='#'>".__('Delete', 'developer-toolkit')."</a>
                             <div id='want_to_delete_".$plugin["id"]."' style='display:none;'>
-                              <span class='table_text'>".__('Are you sure?','wordpress-developer-toolkit')."</span> <a href='#' onclick=\"wpdt_delete_plugin(".$plugin["id"].");\">".__('Yes','wordpress-developer-toolkit')."</a> | <a href='#' onclick=\"jQuery('#want_to_delete_".$plugin["id"]."').hide();\">".__('No','wordpress-developer-toolkit')."</a>
+                              <span class='table_text'>".__('Are you sure?','developer-toolkit')."</span> <a href='#' onclick=\"wpdt_delete_plugin(".$plugin["id"].");\">".__('Yes','developer-toolkit')."</a> | <a href='#' onclick=\"jQuery('#want_to_delete_".$plugin["id"]."').hide();\">".__('No','developer-toolkit')."</a>
                             </div>
           						</div>";
                     echo "</td>";
@@ -210,20 +210,20 @@ class WPDTPluginPage {
                 </tbody>
                 <tfoot>
                   <tr>
-                    <th><?php _e('ID','wordpress-developer-toolkit'); ?></th>
-                    <th><?php _e('Plugin','wordpress-developer-toolkit'); ?></th>
-                    <th><?php _e('Average Rating','wordpress-developer-toolkit'); ?></th>
-                    <th><?php _e('Downloads','wordpress-developer-toolkit'); ?></th>
-                    <th><?php _e('Version','wordpress-developer-toolkit'); ?></th>
-                    <th><?php _e('Last Updated','wordpress-developer-toolkit'); ?></th>
+                    <th><?php _e('ID','developer-toolkit'); ?></th>
+                    <th><?php _e('Plugin','developer-toolkit'); ?></th>
+                    <th><?php _e('Average Rating','developer-toolkit'); ?></th>
+                    <th><?php _e('Downloads','developer-toolkit'); ?></th>
+                    <th><?php _e('Version','developer-toolkit'); ?></th>
+                    <th><?php _e('Last Updated','developer-toolkit'); ?></th>
                   </tr>
                 </tfoot>
               </table>
               <form action="" method="post" class="new_plugin_form">
-                <h3><?php _e('Add One Of You Plugins','wordpress-developer-toolkit'); ?></h3>
-                <label class="new_plugin_form_label"><?php _e("Your Plugin's Slug",'wordpress-developer-toolkit'); ?></label>
+                <h3><?php _e('Add One Of You Plugins','developer-toolkit'); ?></h3>
+                <label class="new_plugin_form_label"><?php _e("Your Plugin's Slug",'developer-toolkit'); ?></label>
                 <input type="text" name="new_plugin" class="new_plugin_form_input"/><br />
-                <input type="submit" value="<?php _e('Add My Plugin','wordpress-developer-toolkit'); ?>" class="button-primary new_plugin_form_button"/>
+                <input type="submit" value="<?php _e('Add My Plugin','developer-toolkit'); ?>" class="button-primary new_plugin_form_button"/>
                 <?php wp_nonce_field('add_plugin','add_plugin_nonce'); ?>
               </form>
               <form action="" method="post" name="delete_plugin_form" style="display:none;">

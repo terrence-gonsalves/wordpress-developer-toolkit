@@ -59,13 +59,13 @@ class WPDTAboutPage {
       ?>
 
     	<div class="wrap about-wrap">
-      	<h1><?php _e('Welcome To WordPress Developer Toolkit', 'wordpress-developer-toolkit'); ?></h1>
-      	<div class="about-text"><?php _e('Thank you for updating!', 'wordpress-developer-toolkit'); ?></div>
+      	<h1><?php _e('Welcome To WordPress Developer Toolkit', 'developer-toolkit'); ?></h1>
+      	<div class="about-text"><?php _e('Thank you for updating!', 'developer-toolkit'); ?></div>
       	<h2 class="nav-tab-wrapper">
       		<a href="javascript:wpdt_setTab(1);" id="tab_1" class="nav-tab nav-tab-active">
-      			<?php _e("What's New!", 'wordpress-developer-toolkit'); ?></a>
+      			<?php _e("What's New!", 'developer-toolkit'); ?></a>
       		<a href="javascript:wpdt_setTab(2);" id="tab_2" class="nav-tab">
-      			<?php _e('Changelog', 'wordpress-developer-toolkit'); ?></a>
+      			<?php _e('Changelog', 'developer-toolkit'); ?></a>
       	</h2>
       	<div id="what_new">
           <h2 style="margin: 1.1em 0 .2em;font-size: 2.4em;font-weight: 300;line-height: 1.3;text-align: center;">New Refresh Button</h2>
@@ -84,15 +84,15 @@ class WPDTAboutPage {
         	<p style="text-align: center;">If you are extending this plugin, you can now hook into the wpdt_extra_shortcodes hook to display your added shortcodes to the list of shortcodes.</p>
         	<br />
           <h2 style="margin: 1.1em 0 .2em;font-size: 2.4em;font-weight: 300;line-height: 1.3;text-align: center;">We Are On GitHub</h2>
-        	<p style="text-align: center;">WordPress Developer Toolkit is on GitHub! I would love for you to add suggestions/feedback by creating issues. Feel free to fork and create pull requests too. Be sure to <a href="https://github.com/fpcorso/wordpress-developer-toolkit">check out the repository</a>.</p>
+        	<p style="text-align: center;">WordPress Developer Toolkit is on GitHub! I would love for you to add suggestions/feedback by creating issues. Feel free to fork and create pull requests too. Be sure to <a href="https://github.com/fpcorso/developer-toolkit">check out the repository</a>.</p>
         	<br />
       	</div>
       	<div id="changelog" style="display: none;">
           <h3><?php echo $version; ?> (March 3, 2015)</h3>
         	<ul>
-            <li>Added Refresh Now Button <a href="https://github.com/fpcorso/wordpress-developer-toolkit/issues/4">Issue #4</a></li>
-            <li>Added Bar Graph Comparing Plugin Downloads <a href="https://github.com/fpcorso/wordpress-developer-toolkit/issues/3">Issue #3</a></li>
-            <li>Bug Fix: Fixed Bug Affecting Cron <a href="https://github.com/fpcorso/wordpress-developer-toolkit/issues/5">Issue #5</a></li>
+            <li>Added Refresh Now Button <a href="https://github.com/fpcorso/developer-toolkit/issues/4">Issue #4</a></li>
+            <li>Added Bar Graph Comparing Plugin Downloads <a href="https://github.com/fpcorso/developer-toolkit/issues/3">Issue #3</a></li>
+            <li>Bug Fix: Fixed Bug Affecting Cron <a href="https://github.com/fpcorso/developer-toolkit/issues/5">Issue #5</a></li>
           </ul>
       	</div>
 

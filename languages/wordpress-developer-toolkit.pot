@@ -164,10 +164,10 @@ msgstr ""
 msgid "Total Plugin Downloads"
 msgstr ""
 
-#: wordpress-developer-toolkit.php:156
+#: developer-toolkit.php:156
 msgid "Stats"
 msgstr ""
 
-#: wordpress-developer-toolkit.php:159 wordpress-developer-toolkit.php:160
+#: developer-toolkit.php:159 developer-toolkit.php:160
 msgid "WPDT About"
 msgstr ""

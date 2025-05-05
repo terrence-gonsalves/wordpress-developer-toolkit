@@ -90,7 +90,7 @@ class WPDTShortcodes {
     public function display_download_link($atts) {
       extract(shortcode_atts(array(
   			'id' => 0,
-        'link' => __('Download','wordpress-developer-toolkit')
+        'link' => __('Download','developer-toolkit')
   		), $atts));
 
       $shortcode = '';
@@ -186,7 +186,7 @@ class WPDTShortcodes {
 			if ( $my_query->have_posts() ) {
 			  while ( $my_query->have_posts() ) {
 			    $my_query->the_post();
-          $shortcode .= get_post_meta( get_the_ID(), 'average_review', true ).__(' out of 5 stars', 'wordpress-developer-toolkit');
+          $shortcode .= get_post_meta( get_the_ID(), 'average_review', true ).__(' out of 5 stars', 'developer-toolkit');
 			  }
 			}
 
