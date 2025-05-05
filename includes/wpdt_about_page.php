@@ -87,7 +87,7 @@ class WPDTAboutPage {
 					<p style="text-align: center;">If you are extending this plugin, you can now hook into the wpdt_extra_shortcodes hook to display your added shortcodes to the list of shortcodes.</p>
 					<br />
 				<h2 style="margin: 1.1em 0 .2em;font-size: 2.4em;font-weight: 300;line-height: 1.3;text-align: center;">We Are On GitHub</h2>
-					<p style="text-align: center;">WordPress Developer Toolkit is on GitHub! I would love for you to add suggestions/feedback by creating issues. Feel free to fork and create pull requests too. Be sure to <a href="https://github.com/fpcorso/developer-toolkit">check out the repository</a>.</p>
+					<p style="text-align: center;">Developer Toolkit for WordPress is on GitHub! I would love for you to add suggestions/feedback by creating issues. Feel free to fork and create pull requests too. Be sure to <a href="https://github.com/fpcorso/developer-toolkit">check out the repository</a>.</p>
 					<br />
 			</div>
 			<div id="changelog" style="display: none;">
