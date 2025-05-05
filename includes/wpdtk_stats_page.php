@@ -57,7 +57,7 @@ class WPDTStatsPage {
      */
      public static function generate_page() {
       if ( !current_user_can('moderate_comments') ) {
-        echo __("You do not have proper authority to access this page",'wordpress-developer-toolkit');
+        echo __("You do not have proper authority to access this page",'developer-toolkit');
         return '';
       }
 
@@ -111,33 +111,33 @@ class WPDTStatsPage {
       ?>
 
       <div class="wrap">
-        <h2><?php _e('Your Stats','wordpress-developer-toolkit'); ?></h2>
+        <h2><?php _e('Your Stats','developer-toolkit'); ?></h2>
         <div class="stat_section">
-          <div class="stat_section_title"><?php _e('Total Plugins','wordpress-developer-toolkit'); ?></div>
+          <div class="stat_section_title"><?php _e('Total Plugins','developer-toolkit'); ?></div>
           <div class="stat_section_count">
             <?php echo $total_plugins; ?>
           </div>
         </div>
         <div class="stat_section">
-          <div class="stat_section_title"><?php _e('Average Downloads','wordpress-developer-toolkit'); ?></div>
+          <div class="stat_section_title"><?php _e('Average Downloads','developer-toolkit'); ?></div>
           <div class="stat_section_count">
             <?php echo $average_downloads; ?>
           </div>
         </div>
         <div class="stat_section">
-          <div class="stat_section_title"><?php _e('Average Rating','wordpress-developer-toolkit'); ?></div>
+          <div class="stat_section_title"><?php _e('Average Rating','developer-toolkit'); ?></div>
           <div class="stat_section_count">
             <?php echo $ratings; ?>
           </div>
         </div>
         <div class="stat_section">
-          <div class="stat_section_title"><?php _e('Total Downloads','wordpress-developer-toolkit'); ?></div>
+          <div class="stat_section_title"><?php _e('Total Downloads','developer-toolkit'); ?></div>
           <div class="stat_section_count">
             <?php echo $downloads; ?>
           </div>
         </div>
           <div class="stat_section">
-            <div class="stat_section_title"><?php _e('Total Plugin Downloads','wordpress-developer-toolkit'); ?></div>
+            <div class="stat_section_title"><?php _e('Total Plugin Downloads','developer-toolkit'); ?></div>
             <div class="stat_section_count">
               <canvas id="plugin_bar_graph" width="500" height="500"/>
             </div>
