@@ -1,35 +1,35 @@
 <?php
 /**
- * Plugin Name: WordPress Developer Toolkit
+ * Plugin Name: Developer Toolkit
  * Plugin URI:  https://en-ca.wordpress.org/plugins/wp-developer-toolkit/
  * Description: The all-in-one toolkit for WordPress developers
- * Author:      Terrence Gonsalves, Frank Corso
+ * Author:      Terrence Gonsalves
  * Author URI:  
- * Version:     0.2.3
- * Text Domain: wordpress-developer-toolkit
+ * Version:     0.3.0
+ * Text Domain: developer-toolkit
  * Domain Path: /languages
  * License:     GPL2
  *
- * WordPress Developer Toolkit is free software: you can redistribute it and/or modify
+ * Developer Toolkit for Developers is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2 of the License, or
  * any later version.
  * 
- * WordPress Developer Toolkit is distributed in the hope that it will be useful,
+ * Developer Toolkit is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with WordPress Developer Toolkit. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
+ * along with Developer Toolkit. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
  *
- * @author Terrence Gonsalves, Frank Corso
- * @version 0.2.3
+ * @author Terrence Gonsalves
+ * @version 0.3.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-if ( ! class_exists( 'WP_Developer_Toolkit' ) ) {
+if ( ! class_exists( 'Developer_Toolkit' ) ) {
 
   /**
     * This class is the main class of the plugin
@@ -38,7 +38,7 @@ if ( ! class_exists( 'WP_Developer_Toolkit' ) ) {
     *
     * @since 0.1.0
     */
-  class WP_Developer_Toolkit {
+  class Developer_Toolkit {
 
       /**
     	 * Cron Manager Object
@@ -49,12 +49,12 @@ if ( ! class_exists( 'WP_Developer_Toolkit' ) ) {
     	public $cron_manager;
 
       /**
-        * WPDT Version Number
+        * DT Version Number
         *
         * @var string
         * @since 0.1.0
         */
-      public $version = '0.2.2';
+      public $version = '0.3.0';
 
       /**
     	  * Main Construct Function
@@ -114,13 +114,13 @@ if ( ! class_exists( 'WP_Developer_Toolkit' ) ) {
       public function load_dependencies() {
 
           //TODO: move this to the includes() function
-          include("php/wpdt_plugins_page.php");
-          include("php/wpdt_stats_page.php");
-          include("php/wpdt_about_page.php");
-          include("php/wpdt_shortcodes.php");
-          include("php/wpdt_update.php");
-          include("php/wpdt_cron.php");
-          include("php/wpdt_refresh.php");
+          include( "includes/wpdt_plugins_page.php" );
+          include( "includes/wpdt_stats_page.php" );
+          include( "includes/wpdt_about_page.php" );
+          include( "includes/wpdt_shortcodes.php" );
+          include( "includes/wpdt_update.php" );
+          include( "includes/wpdt_cron.php" );
+          include( "includes/wpdt_refresh.php" );
 
           $this->cron_manager = new WPDTCron();
       }
@@ -135,11 +135,11 @@ if ( ! class_exists( 'WP_Developer_Toolkit' ) ) {
     	  * @return void
     	  */
       public function add_hooks() {
-          add_action('admin_menu', array( $this, 'setup_admin_menu'));
-          add_action('init', array( $this, 'register_post_types'));
-          add_action('plugins_loaded',  array( $this, 'setup_translations'));
-          add_action('admin_head', array( $this, 'admin_head'), 900);
-          add_action('admin_init','wpdt_update');
+          add_action( 'admin_menu', array( $this, 'setup_admin_menu') );
+          add_action( 'init', array( $this, 'register_post_types') );
+          add_action( 'plugins_loaded',  array( $this, 'setup_translations') );
+          add_action( 'admin_head', array( $this, 'admin_head'), 900 );
+          add_action( 'admin_init','wpdt_update' );
       }
 
       /**
@@ -238,4 +238,4 @@ if ( ! class_exists( 'WP_Developer_Toolkit' ) ) {
 
 }
 
-$wp_developer_toolkit = new WP_Developer_Toolkit();
+$wp_developer_toolkit = new Developer_Toolkit();
