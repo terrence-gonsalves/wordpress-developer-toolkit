@@ -197,9 +197,9 @@ if ( ! class_exists( 'Developer_Toolkit' ) ) {
     	public function setup_admin_menu() {
 
         //TODO: move this to a seperate file and it will be loaded from admin() function
-        if ( function_exists('add_menu_page') ) {
-          add_menu_page('WP Dev Toolkit', 'WP Dev Toolkit', 'moderate_comments', __FILE__, array('WPDTPluginPage','generate_page'), 'dashicons-flag');
-          add_submenu_page(__FILE__, __('Stats', 'developer-toolkit'), __('Stats', 'developer-toolkit'), 'moderate_comments', 'wpdt_stats', array('WPDTStatsPage','generate_page'));
+        if ( function_exists( 'add_menu_page' ) ) {
+          add_menu_page( 'Dev Toolkit', 'Dev Toolkit', 'moderate_comments', __FILE__, array( 'WPDTPluginPage', 'generate_page' ), 'dashicons-schedule' );
+          add_submenu_page( __FILE__, __('Stats', 'developer-toolkit'), __( 'Stats', 'developer-toolkit' ), 'moderate_comments', 'wpdt_stats', array( 'WPDTStatsPage', 'generate_page' ) );
         }
 
         add_dashboard_page(
@@ -207,7 +207,7 @@ if ( ! class_exists( 'Developer_Toolkit' ) ) {
         	__( 'WPDT About', 'developer-toolkit' ),
         	'manage_options',
         	'wpdt_about',
-        	array('WPDTAboutPage', 'generate_page')
+        	array( 'WPDTAboutPage', 'generate_page' )
         );
       }
 
