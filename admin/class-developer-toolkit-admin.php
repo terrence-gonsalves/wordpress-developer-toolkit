@@ -88,7 +88,7 @@ class Developer_Toolkit_Admin {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Wp_Developer_Toolkit_Loader as all of the hooks are defined
+		 * defined in Developer_Toolkit_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
 		 * The Wp_Developer_Toolkit_Loader will then create the relationship
@@ -100,4 +100,61 @@ class Developer_Toolkit_Admin {
 
 	}
 
+	/**
+	 * Add Top Level Menu
+	 * 
+	 * @since 0.1.0
+	 */
+	function admin_menu_page() {
+		add_menu_page(
+			'Developer Toolkit for WordPress',
+			'Dev Toolkit',
+			'manage_options',
+			'developer-toolkit',
+			'admin_page',
+			'dashicons-schedule',
+			20
+		);
+	}
+
+	/**
+	 * HTML Top Level Page
+	 * 
+	 * @since 0.1.0
+	 */
+	function admin_page() {
+		echo '<div class="wrap">';
+		echo '<h1>Developer Toolkit for WordPress</h1>';
+		echo '<p>Welcome to the Developer Toolkit for WordPress!</p>';
+		echo '</div>';
+	}
+
+	/**
+	 * Add Submenu Page
+	 * 
+	 * @since 0.1.0
+	 */
+	function admin_submenu_page() {
+		add_submenu_page(
+			'developer-toolkit',
+			'Developer Toolkit Settings',
+			'Settings',
+			'manage_options',
+			'developer-toolkit-settings',
+			'settings_page'
+		);
+	}
+
+	/**
+	 * Submenu HTML Page
+	 * 
+	 * @since 0.1.0
+	 */
+	function settings_page() {
+		// Output the HTML for the settings page
+		echo '<div class="wrap">';
+		echo '<h1>Developer Toolkit Settings</h1>';
+		echo '<p>Configure your settings here.</p>';
+		echo '</div>';
+	}
 }
