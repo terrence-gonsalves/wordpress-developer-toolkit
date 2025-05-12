@@ -105,13 +105,13 @@ class Developer_Toolkit_Admin {
 	 * 
 	 * @since 0.1.0
 	 */
-	function admin_menu_page() {
+	public static function admin_menu_page() {
 		add_menu_page(
 			'Developer Toolkit for WordPress',
 			'Dev Toolkit',
 			'manage_options',
 			'developer-toolkit',
-			'admin_page',
+			array( __CLASS__, 'admin_page' ),
 			'dashicons-schedule',
 			20
 		);
@@ -122,7 +122,7 @@ class Developer_Toolkit_Admin {
 	 * 
 	 * @since 0.1.0
 	 */
-	function admin_page() {
+	public static function admin_page() {
 		echo '<div class="wrap">';
 		echo '<h1>Developer Toolkit for WordPress</h1>';
 		echo '<p>Welcome to the Developer Toolkit for WordPress!</p>';
@@ -134,14 +134,14 @@ class Developer_Toolkit_Admin {
 	 * 
 	 * @since 0.1.0
 	 */
-	function admin_submenu_page() {
+	public static function admin_submenu_page() {
 		add_submenu_page(
 			'developer-toolkit',
-			'Developer Toolkit Settings',
+			'Settings',
 			'Settings',
 			'manage_options',
 			'developer-toolkit-settings',
-			'settings_page'
+			array( __CLASS__, 'settings_page')
 		);
 	}
 
@@ -150,8 +150,7 @@ class Developer_Toolkit_Admin {
 	 * 
 	 * @since 0.1.0
 	 */
-	function settings_page() {
-		// Output the HTML for the settings page
+	public static function settings_page() {
 		echo '<div class="wrap">';
 		echo '<h1>Developer Toolkit Settings</h1>';
 		echo '<p>Configure your settings here.</p>';
