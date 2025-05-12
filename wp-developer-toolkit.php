@@ -5,7 +5,7 @@
  * Plugin Name:       Developer Toolkit
  * Plugin URI:        https://en-ca.wordpress.org/plugins/wp-developer-toolkit/
  * Description:       The Developer Toolkit for WordPress provides a system of tools for your development needs.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Terrence Gonsalves
  * Author URI:        https://profiles.wordpress.org/tegonsalves/
  * License:           GPL-2.0+
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'DEVELOPER_TOOLKIT_VERSION', '1.0.0' );
+define( 'DEVELOPER_TOOLKIT_VERSION', '1.0.1' );
 
 /**
  * The code that runs during plugin activation.

@@ -105,13 +105,13 @@ class Developer_Toolkit_Admin {
 	 * 
 	 * @since 0.1.0
 	 */
-	public static function admin_menu_page() {
+	public function admin_menu_page() {
 		add_menu_page(
 			'Developer Toolkit for WordPress',
 			'Dev Toolkit',
 			'manage_options',
 			'developer-toolkit',
-			array( __CLASS__, 'admin_page' ),
+			array( $this, 'admin_page' ),
 			'dashicons-schedule',
 			20
 		);
@@ -122,11 +122,22 @@ class Developer_Toolkit_Admin {
 	 * 
 	 * @since 0.1.0
 	 */
-	public static function admin_page() {
-		echo '<div class="wrap">';
-		echo '<h1>Developer Toolkit for WordPress</h1>';
-		echo '<p>Welcome to the Developer Toolkit for WordPress!</p>';
-		echo '</div>';
+	public function admin_page() {
+?>
+		<div class="dtk-wrapper">		
+			<div class="dtk-header">				
+				<h1><?php _e( 'Developer Toolkit for WordPress', 'developer-toolkit' ); ?></h1>
+				<h2 class="nav-tab-wrapper">
+					<a href="javascript:wpdt_setTab(1);" id="tab_1" class="nav-tab nav-tab-active">
+						<?php _e( "What's New!", 'developer-toolkit' ); ?>
+					</a>
+					<a href="javascript:wpdt_setTab(2);" id="tab_2" class="nav-tab">
+						<?php _e( 'Changelog', 'developer-toolkit' ); ?>
+					</a>
+				</h2>
+			</div>
+		</div>
+<?php
 	}
 
 	/**
@@ -134,14 +145,14 @@ class Developer_Toolkit_Admin {
 	 * 
 	 * @since 0.1.0
 	 */
-	public static function admin_submenu_page() {
+	public function admin_submenu_page() {
 		add_submenu_page(
 			'developer-toolkit',
 			'Settings',
 			'Settings',
 			'manage_options',
 			'developer-toolkit-settings',
-			array( __CLASS__, 'settings_page')
+			array( $this, 'settings_page' )
 		);
 	}
 
@@ -150,7 +161,7 @@ class Developer_Toolkit_Admin {
 	 * 
 	 * @since 0.1.0
 	 */
-	public static function settings_page() {
+	public function settings_page() {
 		echo '<div class="wrap">';
 		echo '<h1>Developer Toolkit Settings</h1>';
 		echo '<p>Configure your settings here.</p>';
