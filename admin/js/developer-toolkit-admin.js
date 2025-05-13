@@ -29,4 +29,22 @@
 	 * practising this, we should strive to set a better example in our own work.
 	 */
 
+	$(document).ready(function() {
+		$(".nav-tab").on("click", function() {
+			//$(".nav-tab").removeClass("nav-tab-active");
+			console.log('this is the ID value: ' + $(this).attr("id"));
+
+			if ($(this).attr("id") == "tab_1") {
+				$("#what_new").show();
+				$("#changelog").hide();
+				$("#tab_1").toggleClass("nav-tab-active");
+			}
+
+			if ($(this).attr("id") == "tab_2") {
+				$("#what_new").hide();
+				$("#changelog").show();
+				$("#tab_2").toggleClass("nav-tab-active");
+			}
+		});
+	}); 
 })( jQuery );

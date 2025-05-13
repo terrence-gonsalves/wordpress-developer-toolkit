@@ -27,3 +27,70 @@
   clear: both;
   padding-top: 8px;
 }
+
+.dtk-content {
+  margin: 0;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
+
+.dtk-accordion {
+  border: 1px solid #c3c4c7;
+}
+
+.dtk-accordion-heading {
+  margin: 0;
+  border-top: 1px solid #c3c4c7;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: 600;
+  color: inherit;
+
+  :first-child {
+    border-top: none;
+  }
+}
+
+.dtk-accordion-trigger {
+  background: #fff;
+  border: 0;
+  color: #2c3338;
+  cursor: pointer;
+  display: flex;
+  font-weight: 400;
+  margin: 0;
+  padding: 1em 3.5em 1em 1.5em;
+  min-height: 46px;
+  position: relative;
+  text-align: left;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  -webkit-user-select: auto;
+  user-select: auto;
+
+  .title {
+    pointer-events: none;
+    font-weight: 600;
+    flex-grow: 1;
+  }
+
+  .icon {
+    border: solid #50575e;
+    border-width: 0 2px 2px 0;
+    height: .5rem;
+    pointer-events: none;
+    position: absolute;
+    right: 1.5em;
+    top: 50%;
+    transform: translateY(-70%) rotate(45deg);
+    width: .5rem;
+  }
+}
+
+.dtk-accordion-panel {
+    margin: 0;
+    padding: 1em 1.5em;
+    background: #fff;
+}

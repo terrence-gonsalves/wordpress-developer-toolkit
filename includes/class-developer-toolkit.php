@@ -67,6 +67,9 @@ class Developer_Toolkit {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
+		if ( ! is_admin() )
+			return;
+		
 		if ( defined( 'DEVELOPER_TOOLKIT_VERSION' ) ) {
 			$this->version = DEVELOPER_TOOLKIT_VERSION;
 		} else {
